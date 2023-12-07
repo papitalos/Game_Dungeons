@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dungeons of Papi</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="content">
+      <div class="UI">
+        <div class="soul-icon">
+          <img src="./images/hud/soul_icon.svg" alt="" />
+        </div>
+        <div class="soul-bar-container">
+          <div class="soul-bar"></div>
+        </div>
+        <span class="hit-information">0</span>
+        <div class="coin-container">
+          <img src="./images/hud/coin.png" alt="" />
+          <span class="coin-count">0</span>
+        </div>
+      </div>
+
+      <table class="world-table">
+        <tr>
+          <td class="world-cell" number="0"></td>
+          <td class="world-cell" number="1"></td>
+          <td class="world-cell" number="2"></td>
+        </tr>
+        <tr>
+          <td class="world-cell" number="3"></td>
+          <td class="world-cell" number="4">
+            <div class="soul-reaper">
+              <div class="dying">
+                <img
+                  src="./images/player_spritesheet/dying.png"
+                  alt="13500x900"
+                />
+              </div>
+              <div class="atacking">
+                <img
+                  src="./images/player_spritesheet/atacking.png"
+                  alt="10800x900"
+                />
+              </div>
+              <div class="idle">
+                <img
+                  src="./images/player_spritesheet/idle.png"
+                  alt="16200x900"
+                />
+              </div>
+              <div class="walking">
+                <img
+                  src="./images/player_spritesheet/walking.png"
+                  alt="21600x900"
+                />
+              </div>
+            </div>
+          </td>
+          <td class="world-cell" number="5"></td>
+        </tr>
+        <tr>
+          <td class="world-cell" number="6"></td>
+          <td class="world-cell" number="7">
+            <div class="shield">
+              <img src="./images/itens/shield.png" alt="" />
+            </div>
+            <div class="money">
+              <img src="./images/itens/money.png" alt="" />
+            </div>
+            <div class="soulorb">
+              <img src="./images/itens/soulorb.png" alt="" />
+            </div>
+          </td>
+          <td class="world-cell" number="8">
+            <div class="enemy">
+              <div class="enemy_dying">
+                <img
+                  src="./images/enemy_spritesheet/enemy_dying.png"
+                  alt="13500x900"
+                />
+              </div>
+              <div class="enemy_atacking">
+                <img
+                  src="./images/enemy_spritesheet/enemy_atacking.png"
+                  alt="10800x900"
+                />
+              </div>
+              <div class="enemy_idle">
+                <img
+                  src="./images/enemy_spritesheet/enemy_idle.png"
+                  alt="16200x900"
+                />
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+
+      <table class="inventory">
+        <tr>
+          <td class="inventory-cell" number="0"></td>
+          <td class="inventory-cell" number="1"></td>
+          <td class="inventory-cell" number="2"></td>
+        </tr>
+      </table>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

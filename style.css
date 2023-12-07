@@ -1,0 +1,931 @@
+
+body{
+    caret-color: transparent;
+    user-select: none;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    margin:0;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: black;
+}
+
+.content{
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+/*WORLD*/
+.world-table{
+    order:1;
+    background-color: rgba(139, 139, 139, 0.237);
+    position: relative;
+}
+
+
+.world-cell{
+    background-size: cover;
+    width: 10vw;
+    height: 10vw;
+}
+.tile1 {
+    background-image: url("./images/stone/floor\ 1.png");
+}
+.tile2 {
+    background-image: url("./images/stone/floor\ 2.png");
+}
+.tile3 {
+    background-image: url("./images/stone/floor\ 6.png");
+}
+
+
+/*INVENTORY*/
+.inventory{
+    margin-top: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    order: 2;
+    width: 100%;
+}
+.inventory-cell{
+    position: relative;
+    background-image: url("./images/inv.png");
+    background-size: cover;
+    background-color: aliceblue;
+    color: aliceblue;
+    width: 8vw;
+    height: 8vw;
+    position: relative;
+}
+
+/*Key*/
+.inventory-cell[number="0"]::after{
+    content: "1";
+    font-size: 1vw;
+    padding: 0.2vw;
+    background-color: black;
+    border: 2px solid gray;
+    border-radius: 1vw;
+    position: absolute;
+    top: 5%;
+}
+.inventory-cell[number="1"]::after {
+    content: "2";
+    font-size: 1vw;
+    padding: 0.2vw;
+    background-color: black;
+    border: 2px solid gray;
+    border-radius: 1vw;
+    position: absolute;
+    top: 5%;
+}
+.inventory-cell[number="2"]::after {
+    content: "3";
+    font-size: 1vw;
+    padding: 0.2vw;
+    background-color: black;
+    border: 2px solid gray;
+    border-radius: 1vw;
+    position: absolute;
+    top: 5%;
+}
+
+/*Player*/
+@keyframes player_idle {
+    0% {
+        clip-path: polygon(170vw 0vw, 180vw 0vw, 180vw 180vw, 170vw 180vw);
+        right: 0vw;
+    }
+
+    5.56% {
+        clip-path: polygon(160vw 0vw, 170vw 0vw, 170vw 170vw, 160vw 170vw);
+        right: -10vw;
+    }
+
+    11.12% {
+        clip-path: polygon(150vw 0vw, 160vw 0vw, 160vw 160vw, 150vw 160vw);
+        right: -20vw;
+    }
+
+    16.68% {
+        clip-path: polygon(140vw 0vw, 150vw 0vw, 150vw 150vw, 140vw 150vw);
+        right: -30vw;
+    }
+
+    22.24% {
+        clip-path: polygon(130vw 0vw, 140vw 0vw, 140vw 140vw, 130vw 140vw);
+        right: -40vw;
+    }
+
+    27.80% {
+        clip-path: polygon(120vw 0vw, 130vw 0vw, 130vw 130vw, 120vw 130vw);
+        right: -50vw;
+    }
+
+    33.36% {
+        clip-path: polygon(110vw 0vw, 120vw 0vw, 120vw 120vw, 110vw 120vw);
+        right: -60vw;
+    }
+
+    38.92% {
+        clip-path: polygon(100vw 0vw, 110vw 0vw, 110vw 110vw, 100vw 110vw);
+        right: -70vw;
+    }
+
+    44.48% {
+        clip-path: polygon(90vw 0vw, 100vw 0vw, 100vw 100vw, 90vw 100vw);
+        right: -80vw;
+    }
+
+    50.04% {
+        clip-path: polygon(80vw 0vw, 90vw 0vw, 90vw 90vw, 80vw 90vw);
+        right: -90vw;
+    }
+
+    55.60% {
+        clip-path: polygon(70vw 0vw, 80vw 0vw, 80vw 80vw, 70vw 80vw);
+        right: -100vw;
+    }
+
+    61.16% {
+        clip-path: polygon(60vw 0vw, 70vw 0vw, 70vw 70vw, 60vw 70vw);
+        right: -110vw;
+    }
+
+    66.72% {
+        clip-path: polygon(50vw 0vw, 60vw 0vw, 60vw 60vw, 50vw 60vw);
+        right: -120vw;
+    }
+
+    72.28% {
+        clip-path: polygon(40vw 0vw, 50vw 0vw, 50vw 50vw, 40vw 50vw);
+        right: -130vw;
+    }
+
+    77.84% {
+        clip-path: polygon(30vw 0vw, 40vw 0vw, 40vw 40vw, 30vw 40vw);
+        right: -140vw;
+    }
+
+    83.40% {
+        clip-path: polygon(20vw 0vw, 30vw 0vw, 30vw 30vw, 20vw 30vw);
+        right: -150vw;
+    }
+
+    88.96% {
+        clip-path: polygon(10vw 0vw, 20vw 0vw, 20vw 20vw, 10vw 20vw);
+        right: -160vw;
+    }
+
+    94.52% {
+        clip-path: polygon(0vw 0vw, 10vw 0vw, 10vw 10vw, 0vw 10vw);
+        right: -170vw;
+    }
+
+    100% {
+        clip-path: polygon(-10vw 0vw, 0vw 0vw, 0vw 0vw, -10vw 0vw);
+        right: -180vw;
+    }
+}
+@keyframes player_walk {
+    0% {
+        right: 0vw;
+        clip-path: polygon(230vw 0vw, 240vw 0vw, 240vw 10vw, 230vw 10vw);
+    }
+
+    4.17% {
+        right: -10vw;
+        clip-path: polygon(220vw 0vw, 230vw 0vw, 230vw 10vw, 220vw 10vw);
+    }
+
+    8.33% {
+        right: -20vw;
+        clip-path: polygon(210vw 0vw, 220vw 0vw, 220vw 10vw, 210vw 10vw);
+    }
+
+    12.50% {
+        right: -30vw;
+        clip-path: polygon(200vw 0vw, 210vw 0vw, 210vw 10vw, 200vw 10vw);
+    }
+
+    16.67% {
+        right: -40vw;
+        clip-path: polygon(190vw 0vw, 200vw 0vw, 200vw 10vw, 190vw 10vw);
+    }
+
+    20.83% {
+        right: -50vw;
+        clip-path: polygon(180vw 0vw, 190vw 0vw, 190vw 10vw, 180vw 10vw);
+    }
+
+    25.00% {
+        right: -60vw;
+        clip-path: polygon(170vw 0vw, 180vw 0vw, 180vw 10vw, 170vw 10vw);
+    }
+
+    29.17% {
+        right: -70vw;
+        clip-path: polygon(160vw 0vw, 170vw 0vw, 170vw 10vw, 160vw 10vw);
+    }
+
+    33.33% {
+        right: -80vw;
+        clip-path: polygon(150vw 0vw, 160vw 0vw, 160vw 10vw, 150vw 10vw);
+    }
+
+    37.50% {
+        right: -90vw;
+        clip-path: polygon(140vw 0vw, 150vw 0vw, 150vw 10vw, 140vw 10vw);
+    }
+
+    41.67% {
+        right: -100vw;
+        clip-path: polygon(130vw 0vw, 140vw 0vw, 140vw 10vw, 130vw 10vw);
+    }
+
+    45.83% {
+        right: -110vw;
+        clip-path: polygon(120vw 0vw, 130vw 0vw, 130vw 10vw, 120vw 10vw);
+    }
+
+    50.00% {
+        right: -120vw;
+        clip-path: polygon(110vw 0vw, 120vw 0vw, 120vw 10vw, 110vw 10vw);
+    }
+
+    54.17% {
+        right: -130vw;
+        clip-path: polygon(100vw 0vw, 110vw 0vw, 110vw 10vw, 100vw 10vw);
+    }
+
+    58.33% {
+        right: -140vw;
+        clip-path: polygon(90vw 0vw, 100vw 0vw, 100vw 10vw, 90vw 10vw);
+    }
+
+    62.50% {
+        right: -150vw;
+        clip-path: polygon(80vw 0vw, 90vw 0vw, 90vw 10vw, 80vw 10vw);
+    }
+
+    66.67% {
+        right: -160vw;
+        clip-path: polygon(70vw 0vw, 80vw 0vw, 80vw 10vw, 70vw 10vw);
+    }
+
+    70.83% {
+        right: -170vw;
+        clip-path: polygon(60vw 0vw, 70vw 0vw, 70vw 10vw, 60vw 10vw);
+    }
+
+    75.00% {
+        right: -180vw;
+        clip-path: polygon(50vw 0vw, 60vw 0vw, 60vw 10vw, 50vw 10vw);
+    }
+
+    79.17% {
+        right: -190vw;
+        clip-path: polygon(40vw 0vw, 50vw 0vw, 50vw 10vw, 40vw 10vw);
+    }
+
+    83.33% {
+        right: -200vw;
+        clip-path: polygon(30vw 0vw, 40vw 0vw, 40vw 10vw, 30vw 10vw);
+    }
+
+    87.50% {
+        right: -210vw;
+        clip-path: polygon(20vw 0vw, 30vw 0vw, 30vw 10vw, 20vw 10vw);
+    }
+
+    91.67% {
+        right: -220vw;
+        clip-path: polygon(10vw 0vw, 20vw 0vw, 20vw 10vw, 10vw 10vw);
+    }
+
+    95.83% {
+        right: -230vw;
+        clip-path: polygon(0vw 0vw, 10vw 0vw, 10vw 10vw, 0vw 10vw);
+    }
+
+    100% {
+        right: -240vw;
+        clip-path: polygon(-10vw 0vw, 0vw 0vw, 0vw 10vw, -10vw 10vw);
+    }
+}
+@keyframes player_attack {
+    0% {
+        right: 0vw;
+        clip-path: polygon(110vw 0vw, 120vw 0vw, 120vw 10vw, 110vw 10vw);
+    }
+
+    8.33% {
+        right: -10vw;
+        clip-path: polygon(100vw 0vw, 110vw 0vw, 110vw 10vw, 100vw 10vw);
+    }
+
+    16.67% {
+        right: -20vw;
+        clip-path: polygon(90vw 0vw, 100vw 0vw, 100vw 10vw, 90vw 10vw);
+    }
+
+    25.00% {
+        right: -30vw;
+        clip-path: polygon(80vw 0vw, 90vw 0vw, 90vw 10vw, 80vw 10vw);
+    }
+
+    33.33% {
+        right: -40vw;
+        clip-path: polygon(70vw 0vw, 80vw 0vw, 80vw 10vw, 70vw 10vw);
+    }
+
+    41.67% {
+        right: -50vw;
+        clip-path: polygon(60vw 0vw, 70vw 0vw, 70vw 10vw, 60vw 10vw);
+    }
+
+    50.00% {
+        right: -60vw;
+        clip-path: polygon(50vw 0vw, 60vw 0vw, 60vw 10vw, 50vw 10vw);
+    }
+
+    58.33% {
+        right: -70vw;
+        clip-path: polygon(40vw 0vw, 50vw 0vw, 50vw 10vw, 40vw 10vw);
+    }
+
+    66.67% {
+        right: -80vw;
+        clip-path: polygon(30vw 0vw, 40vw 0vw, 40vw 10vw, 30vw 10vw);
+    }
+
+    75.00% {
+        right: -90vw;
+        clip-path: polygon(20vw 0vw, 30vw 0vw, 30vw 10vw, 20vw 10vw);
+    }
+
+    83.33% {
+        right: -100vw;
+        clip-path: polygon(10vw 0vw, 20vw 0vw, 20vw 10vw, 10vw 10vw);
+    }
+
+    91.67% {
+        right: -110vw;
+        clip-path: polygon(0vw 0vw, 10vw 0vw, 10vw 10vw, 0vw 10vw);
+    }
+
+    100% {
+        right: -120vw;
+        clip-path: polygon(-10vw 0vw, 0vw 0vw, 0vw 10vw, -10vw 10vw);
+    }
+}
+@keyframes player_dying {
+    0% {
+        right: 0vw;
+        clip-path: polygon(140vw 0vw, 150vw 0vw, 150vw 10vw, 140vw 10vw);
+    }
+
+    6.67% {
+        right: -10vw;
+        clip-path: polygon(130vw 0vw, 140vw 0vw, 140vw 10vw, 130vw 10vw);
+    }
+
+    13.33% {
+        right: -20vw;
+        clip-path: polygon(120vw 0vw, 130vw 0vw, 130vw 10vw, 120vw 10vw);
+    }
+
+    20% {
+        right: -30vw;
+        clip-path: polygon(110vw 0vw, 120vw 0vw, 120vw 10vw, 110vw 10vw);
+    }
+
+    26.67% {
+        right: -40vw;
+        clip-path: polygon(100vw 0vw, 110vw 0vw, 110vw 10vw, 100vw 10vw);
+    }
+
+    33.33% {
+        right: -50vw;
+        clip-path: polygon(90vw 0vw, 100vw 0vw, 100vw 10vw, 90vw 10vw);
+    }
+
+    40% {
+        right: -60vw;
+        clip-path: polygon(80vw 0vw, 90vw 0vw, 90vw 10vw, 80vw 10vw);
+    }
+
+    46.67% {
+        right: -70vw;
+        clip-path: polygon(70vw 0vw, 80vw 0vw, 80vw 10vw, 70vw 10vw);
+    }
+
+    53.33% {
+        right: -80vw;
+        clip-path: polygon(60vw 0vw, 70vw 0vw, 70vw 10vw, 60vw 10vw);
+    }
+
+    60% {
+        right: -90vw;
+        clip-path: polygon(50vw 0vw, 60vw 0vw, 60vw 10vw, 50vw 10vw);
+    }
+
+    66.67% {
+        right: -100vw;
+        clip-path: polygon(40vw 0vw, 50vw 0vw, 50vw 10vw, 40vw 10vw);
+    }
+
+    73.33% {
+        right: -110vw;
+        clip-path: polygon(30vw 0vw, 40vw 0vw, 40vw 10vw, 30vw 10vw);
+    }
+
+    80% {
+        right: -120vw;
+        clip-path: polygon(20vw 0vw, 30vw 0vw, 30vw 10vw, 20vw 10vw);
+    }
+
+    86.67% {
+        right: -130vw;
+        clip-path: polygon(10vw 0vw, 20vw 0vw, 20vw 10vw, 10vw 10vw);
+    }
+
+    93.33% {
+        right: -140vw;
+        clip-path: polygon(0vw 0vw, 10vw 0vw, 10vw 10vw, 0vw 10vw);
+    }
+
+    100% {
+        right: -150vw;
+        clip-path: polygon(-10vw 0vw, 0vw 0vw, 0vw 10vw, -10vw 10vw);
+    }
+}
+
+
+.soul-reaper {
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: left var(--playerSpeed), top var(--playerSpeed);
+}
+
+/*animacoes de cada acao ativa*/
+.soul-reaper .idle img {
+    display: none;
+    position: absolute;
+    height: 10vw;
+    animation: player_idle 0.4s steps(1) infinite;
+}
+
+.soul-reaper .walking img {
+    display: none;
+    position: absolute;
+    height: 10vw;
+    animation: player_walk 0.5s steps(1) infinite;
+}
+
+.soul-reaper .atacking img {
+    display: none;
+    position: absolute;
+    height: 10vw;
+    animation: player_attack 0.3s steps(1) infinite;
+}
+
+.soul-reaper .dying img {
+    display: none;
+    position: absolute;
+    height: 10vw;
+    animation: player_dying 0.5s steps(1) 1;
+    clip-path: polygon(0vw 0vw, 10vw 0vw, 10vw 10vw, 0vw 10vw);
+}
+
+/*SOULBAR*/
+.hit-information {
+    margin-right: 6%;
+    font-size: 1vw;
+    color: rgb(234, 51, 38);
+    opacity: 1;
+    transition: opacity 1s ease-out;
+}
+
+.hit-information.fade {
+    opacity: 0;
+}
+.UI {
+    order: 0;
+    width: 100%;
+    height: 5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.soul-bar-container {
+    margin-right: 1%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: rgb(18, 60, 48);
+    border-radius: 10px;
+    width:10%;
+    padding: 0.03vw;
+}
+
+.soul-bar {
+    background-color: rgb(99, 183, 137);
+    height: 0.3vw;
+    width: 100%;
+    border-radius: 7px;
+    transition: width 0.4s ease-in-out;
+}
+
+.soul-icon{
+    margin-right: 0.5%;
+    margin-top: 0.4vw;
+}
+.soul-icon img{
+    width: 1vw;
+}
+
+/*WALLET*/
+.coin-container{
+    margin-left: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.coin-container img{
+    width: 2.5vw;
+}
+.coin-container .coin-count {
+    font-size: 1vw;
+    color: aliceblue;
+    margin-left: 10px;
+}
+
+
+/*Inimigo*/
+@keyframes enemy_idle {
+    0% {
+        clip-path: polygon(170vw 0vw, 180vw 0vw, 180vw 10vw, 170vw 10vw);
+        right: 0vw;
+    }
+
+    5.56% {
+        clip-path: polygon(160vw 0vw, 170vw 0vw, 170vw 10vw, 160vw 10vw);
+        right: -10vw;
+    }
+
+    11.12% {
+        clip-path: polygon(150vw 0vw, 160vw 0vw, 160vw 10vw, 150vw 10vw);
+        right: -20vw;
+    }
+
+    16.68% {
+        clip-path: polygon(140vw 0vw, 150vw 0vw, 150vw 10vw, 140vw 10vw);
+        right: -30vw;
+    }
+
+    22.24% {
+        clip-path: polygon(130vw 0vw, 140vw 0vw, 140vw 10vw, 130vw 10vw);
+        right: -40vw;
+    }
+
+    27.80% {
+        clip-path: polygon(120vw 0vw, 130vw 0vw, 130vw 10vw, 120vw 10vw);
+        right: -50vw;
+    }
+
+    33.36% {
+        clip-path: polygon(110vw 0vw, 120vw 0vw, 120vw 10vw, 110vw 10vw);
+        right: -60vw;
+    }
+
+    38.92% {
+        clip-path: polygon(100vw 0vw, 110vw 0vw, 110vw 10vw, 100vw 10vw);
+        right: -70vw;
+    }
+
+    44.48% {
+        clip-path: polygon(90vw 0vw, 100vw 0vw, 100vw 10vw, 90vw 10vw);
+        right: -80vw;
+    }
+
+    50.04% {
+        clip-path: polygon(80vw 0vw, 90vw 0vw, 90vw 10vw, 80vw 10vw);
+        right: -90vw;
+    }
+
+    55.60% {
+        clip-path: polygon(70vw 0vw, 80vw 0vw, 80vw 10vw, 70vw 10vw);
+        right: -100vw;
+    }
+
+    61.16% {
+        clip-path: polygon(60vw 0vw, 70vw 0vw, 70vw 10vw, 60vw 10vw);
+        right: -110vw;
+    }
+
+    66.72% {
+        clip-path: polygon(50vw 0vw, 60vw 0vw, 60vw 10vw, 50vw 10vw);
+        right: -120vw;
+    }
+
+    72.28% {
+        clip-path: polygon(40vw 0vw, 50vw 0vw, 50vw 10vw, 40vw 10vw);
+        right: -130vw;
+    }
+
+    77.84% {
+        clip-path: polygon(30vw 0vw, 40vw 0vw, 40vw 10vw, 30vw 10vw);
+        right: -140vw;
+    }
+
+    83.40% {
+        clip-path: polygon(20vw 0vw, 30vw 0vw, 30vw 10vw, 20vw 10vw);
+        right: -150vw;
+    }
+
+    88.96% {
+        clip-path: polygon(10vw 0vw, 20vw 0vw, 20vw 10vw, 10vw 10vw);
+        right: -160vw;
+    }
+
+    94.52% {
+        clip-path: polygon(0vw 0vw, 10vw 0vw, 10vw 10vw, 0vw 10vw);
+        right: -170vw;
+    }
+
+    100% {
+        clip-path: polygon(-10vw 0vw, 0vw 0vw, 0vw 10vw, -10vw 10vw);
+        right: -180vw;
+    }
+}
+@keyframes enemy_dying {
+    0% {
+        clip-path: polygon(140vw 0vw, 150vw 0vw, 150vw 10vw, 140vw 10vw);
+        right: 0vw;
+    }
+
+    6.67% {
+        clip-path: polygon(130vw 0vw, 140vw 0vw, 140vw 10vw, 130vw 10vw);
+        right: -10vw;
+    }
+
+    13.33% {
+        clip-path: polygon(120vw 0vw, 130vw 0vw, 130vw 10vw, 120vw 10vw);
+        right: -20vw;
+    }
+
+    20% {
+        clip-path: polygon(110vw 0vw, 120vw 0vw, 120vw 10vw, 110vw 10vw);
+        right: -30vw;
+    }
+
+    26.67% {
+        clip-path: polygon(100vw 0vw, 110vw 0vw, 110vw 10vw, 100vw 10vw);
+        right: -40vw;
+    }
+
+    33.33% {
+        clip-path: polygon(90vw 0vw, 100vw 0vw, 100vw 10vw, 90vw 10vw);
+        right: -50vw;
+    }
+
+    40% {
+        clip-path: polygon(80vw 0vw, 90vw 0vw, 90vw 10vw, 80vw 10vw);
+        right: -60vw;
+    }
+
+    46.67% {
+        clip-path: polygon(70vw 0vw, 80vw 0vw, 80vw 10vw, 70vw 10vw);
+        right: -70vw;
+    }
+
+    53.33% {
+        clip-path: polygon(60vw 0vw, 70vw 0vw, 70vw 10vw, 60vw 10vw);
+        right: -80vw;
+    }
+
+    60% {
+        clip-path: polygon(50vw 0vw, 60vw 0vw, 60vw 10vw, 50vw 10vw);
+        right: -90vw;
+    }
+
+    66.67% {
+        clip-path: polygon(40vw 0vw, 50vw 0vw, 50vw 10vw, 40vw 10vw);
+        right: -100vw;
+    }
+
+    73.33% {
+        clip-path: polygon(30vw 0vw, 40vw 0vw, 40vw 10vw, 30vw 10vw);
+        right: -110vw;
+    }
+
+    80% {
+        clip-path: polygon(20vw 0vw, 30vw 0vw, 30vw 10vw, 20vw 10vw);
+        right: -120vw;
+    }
+
+    86.67% {
+        clip-path: polygon(10vw 0vw, 20vw 0vw, 20vw 10vw, 10vw 10vw);
+        right: -130vw;
+    }
+
+    93.33% {
+        clip-path: polygon(0vw 0vw, 10vw 0vw, 10vw 10vw, 0vw 10vw);
+        right: -140vw;
+    }
+
+    100% {
+        clip-path: polygon(-10vw 0vw, 0vw 0vw, 0vw 10vw, -10vw 10vw);
+        right: -150vw;
+    }
+}
+@keyframes enemy_attacking {
+    0% {
+        clip-path: polygon(110vw 0vw, 120vw 0vw, 120vw 10vw, 110vw 10vw);
+        right: 0vw;
+    }
+
+    8.33% {
+        clip-path: polygon(100vw 0vw, 110vw 0vw, 110vw 10vw, 100vw 10vw);
+        right: -10vw;
+    }
+
+    16.67% {
+        clip-path: polygon(90vw 0vw, 100vw 0vw, 100vw 10vw, 90vw 10vw);
+        right: -20vw;
+    }
+
+    25% {
+        clip-path: polygon(80vw 0vw, 90vw 0vw, 90vw 10vw, 80vw 10vw);
+        right: -30vw;
+    }
+
+    33.33% {
+        clip-path: polygon(70vw 0vw, 80vw 0vw, 80vw 10vw, 70vw 10vw);
+        right: -40vw;
+    }
+
+    41.67% {
+        clip-path: polygon(60vw 0vw, 70vw 0vw, 70vw 10vw, 60vw 10vw);
+        right: -50vw;
+    }
+
+    50% {
+        clip-path: polygon(50vw 0vw, 60vw 0vw, 60vw 10vw, 50vw 10vw);
+        right: -60vw;
+    }
+
+    58.33% {
+        clip-path: polygon(40vw 0vw, 50vw 0vw, 50vw 10vw, 40vw 10vw);
+        right: -70vw;
+    }
+
+    66.67% {
+        clip-path: polygon(30vw 0vw, 40vw 0vw, 40vw 10vw, 30vw 10vw);
+        right: -80vw;
+    }
+
+    75% {
+        clip-path: polygon(20vw 0vw, 30vw 0vw, 30vw 10vw, 20vw 10vw);
+        right: -90vw;
+    }
+
+    83.33% {
+        clip-path: polygon(10vw 0vw, 20vw 0vw, 20vw 10vw, 10vw 10vw);
+        right: -100vw;
+    }
+
+    91.67% {
+        clip-path: polygon(0vw 0vw, 10vw 0vw, 10vw 10vw, 0vw 10vw);
+        right: -110vw;
+    }
+
+    100% {
+        clip-path: polygon(-10vw 0vw, 0vw 0vw, 0vw 10vw, -10vw 10vw);
+        right: -120vw;
+    }
+}
+
+.enemy {
+    width: 10vw;
+    height: 10vw;
+    position: absolute;
+    left: -9999vw;
+    top: -9999vw;
+    transform: translate(-50%, -50%);
+}
+.enemy_idle img {
+    display: none;
+    position: absolute;
+    height: 10vw;
+    animation: enemy_idle 0.4s steps(1) infinite;
+}
+.enemy_dying img {
+    display: none;
+    position: absolute;
+    height: 10vw;
+    animation: enemy_dying 0.5s steps(1) infinite;
+}
+.enemy_atacking img {
+    display: none;
+    position: absolute;
+    height: 10vw;
+    animation: enemy_attacking 0.5s steps(1) infinite;
+}
+
+/*ITENS*/
+.shield{
+    position: absolute;
+    display: none;
+    width: 10vw;
+    height: 10vw;
+    left: -99990vw;
+    top: -99990vw;
+    transform: translate(-50%, -50%);
+}
+.shield img{
+    position: absolute;
+    width: 5vw;
+    height: 5vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.soulorb {
+    position: absolute;
+    display: none;
+    width: 10vw;
+    height: 10vw;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+.soulorb img {
+    position: absolute;
+    width: 5vw;
+    height: 5vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.money {
+    position: absolute;
+    display: none;
+    width: 10vw;
+    height: 10vw;
+    left: -99990vw;
+    top: -99990vw;
+    transform: translate(-50%, -50%);
+}
+.money img {
+    position: absolute;
+    width: 5vw;
+    height: 5vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.menu button{
+    padding: 2vw;
+    border-radius: 1vw;
+    background-color: rgb(99, 183, 137);
+}
+.menu button a{
+    text-decoration: none;
+    font-size: 2vw;
+    font-weight: bold;
+    color:white;
+}
+
+.text {
+    margin-left: 5vw;
+    width:5vw;
+}
+.text p {
+    font-size: 2em;
+    color: aliceblue;
+}
+.text p:hover{
+    color: aqua;
+}
